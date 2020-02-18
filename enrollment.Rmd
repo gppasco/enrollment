@@ -16,7 +16,13 @@ library(gt)
 
 ```{r reading, echo=FALSE}
 enrollment <- read_excel("class_enrollment_summary_by_term2.18.20.xlsx", skip=3) %>%
-  clean_names() 
+  clean_names() %>%
+  select(course_title, course_name, course_department, total) %>%
+  group_by(course_department) %>%
+  summarize(enrollees = sum(total)) %>%
+  arrange(desc(enrollees)) %>%
+  slice(1:5)
+  
 
 enrollment
 ```
