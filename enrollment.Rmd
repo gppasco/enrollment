@@ -13,3 +13,10 @@ library(janitor)
 library(tidyverse)
 library(gt)
 ```
+
+```{r reading, echo=FALSE}
+enrollment <- read_excel("class_enrollment_summary_by_term2.18.20.xlsx", skip=3) %>%
+  clean_names() 
+
+enrollment
+```
